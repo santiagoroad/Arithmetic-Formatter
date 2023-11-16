@@ -3,6 +3,7 @@ def arithmetic_arranger(problems):
     arranged_problems1 = ''
     arranged_problems2 = ''
     arranged_problems3 = ''
+    diference = 0
 
     # Validates if there are too many problems
     if len(problems) > 5:
@@ -28,16 +29,50 @@ def arithmetic_arranger(problems):
         # Begin the construncion of the answer
         else:
             # Put the logic to order the information
-            arranged_problems1 = arranged_problems1 + infooperation[0]
-            arranged_problems2 = arranged_problems2 + infooperation[1]
-            arranged_problems3 = arranged_problems3 + infooperation[2]
+            # Is in case de 
+            if (len(infooperation[0]) > len(infooperation[1] + ' ' + infooperation[2])):
+                
+                diference = len(infooperation[0]) - len(infooperation[1] + ' ' + infooperation[2])
+                
+                arranged_problems2 = arranged_problems2 + infooperation[1] + ' '
+                
+                while (diference > 0):
+                    arranged_problems2 = arranged_problems2 + ' '
+                    diference = diference - 1
 
-            arranged_problems1 = arranged_problems1 + '/'
-            arranged_problems2 = arranged_problems2 + '/'
-            arranged_problems3 = arranged_problems3 + '/'
+                diference = len(infooperation[0])
+
+                arranged_problems1 = arranged_problems1 + infooperation[0]
+                arranged_problems2 = arranged_problems2 + infooperation[2]
+
+                while (diference > 0):
+                    arranged_problems3 = arranged_problems3 + '-'
+                    diference = diference - 1
+
+            else :
+                
+                diference = len(infooperation[1] + ' ' + infooperation[2]) - len(infooperation[0])
+                
+                arranged_problems2 = arranged_problems2 + infooperation[1] + ' '
+
+                while (diference > 0):
+                    arranged_problems1 = arranged_problems1  + ' '
+                    diference = diference - 1
+
+                diference = len(infooperation[1] + ' ' + infooperation[2])
+
+                while (diference > 0):
+                    arranged_problems3 = arranged_problems3 + '-'
+                    diference = diference - 1
+
+                arranged_problems1 = arranged_problems1 + infooperation[0]
+                arranged_problems2 = arranged_problems2 + infooperation[2]
+
+            arranged_problems1 = arranged_problems1 + '    '
+            arranged_problems2 = arranged_problems2 + '    '
+            arranged_problems3 = arranged_problems3 + '    '
     
     print(arranged_problems1)
     print(arranged_problems2)
     print(arranged_problems3)
-    
     return arranged_problems
